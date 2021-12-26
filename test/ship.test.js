@@ -1,4 +1,4 @@
-const ships = require('../src/logic');
+const ships = require('../src/factory/ship');
 const Ship = ships.Ship;
 
 describe('Ship class', () => {
