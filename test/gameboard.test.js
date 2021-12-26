@@ -9,14 +9,14 @@ describe('test gameboard ship placement', () => {
   let patrolBoat;
   beforeEach(() => {
     board = new Gameboard();
-    destroyer = new Ship('Destoryer', 3);
+    destroyer = new Ship('Destroyer', 3);
     patrolBoat = new Ship('Patrol Boat', 2);
   });
   
   test('place destroyer horizontally at (0, 0)', () => {
     board.placeShip(destroyer, [0, 0], 'x');
     expect(board.board).toEqual([
-      ['O', 'O', 'O', '', '', '', '', '', '', ''],
+      ['Destroyer', 'Destroyer', 'Destroyer', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', ''],
@@ -35,12 +35,31 @@ describe('test gameboard ship placement', () => {
       ['', '', '', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', ''],
-      ['', '', '', '', '', '', '', '', '', 'O'],
-      ['', '', '', '', '', '', '', '', '', 'O'],
+      ['', '', '', '', '', '', '', '', '', 'Patrol Boat'],
+      ['', '', '', '', '', '', '', '', '', 'Patrol Boat'],
       ['', '', '', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', ''],
       ['', '', '', '', '', '', '', '', '', '']
     ]);
+  });
+});
+
+describe.skip('test receiveAttack', () => {
+  let board;
+  let destroyer;
+  let patrolBoat;
+  beforeEach(() => {
+    board = new Gameboard();
+    destroyer = new Ship('Destoryer', 3);
+    patrolBoat = new Ship('Patrol Boat', 2);
+  });
+
+  test('hit a destroyer placed at (2, 3) vertically', () => {
+    board.placeShip(destroyer, [2, 3], 'y');
+
+  });
+  test('no hit', () => {
+
   });
 });
