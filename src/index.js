@@ -2,7 +2,7 @@ import './style.css';
 import { Gameboard } from './factory/gameboard';
 import { Player } from './factory/player';
 import { Ship } from './factory/ship';
-import { createContent, createHeader } from './ui-element';
+import { createContent, createHeader, createStart } from './ui-element';
 
 // initialize new game 
 const player = new Player('Player');
@@ -14,3 +14,5 @@ const boardComputer = new Gameboard();
 createHeader();
 // create content 
 createContent('Player\s Turn (test)', player, computer, boardP1, boardComputer);
+// create start 
+createStart();
