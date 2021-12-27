@@ -24,10 +24,6 @@ body {
   gap: 20px;
 }
 
-.message-container {
-  margin-bottom: 20px;
-}
-
 .player-container {
   padding: 10px;
 }
@@ -71,16 +67,6 @@ body {
   background-color: #ffebcd;
 }
 
-.button-container {
+.message-container {
   padding: 20px;
-}
-
-.start-button {
-  font-size: 18px;
-  padding: 6px 12px;
-}
-
-.start-button:hover {
-  cursor: pointer;
-  transform: scale(1.2);
 }
