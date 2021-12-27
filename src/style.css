@@ -7,10 +7,57 @@
 body {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* CHANGE LATER */
+  justify-content: space-between;
   align-items: center;
+  height: 100vh;
 }
 
 .header-container {
   padding: 20px;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-container {
+  margin-bottom: 20px;
+}
+
+.player-container {
+  padding: 10px;
+}
+
+.board-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
+}
+
+.player-name {
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.board {
+  height: 350px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+  justify-content: stretch;
+}
+
+.col {
+  flex: 1;
+  border: 1px solid #000;
 }
