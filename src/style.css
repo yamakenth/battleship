@@ -66,6 +66,11 @@ body {
   align-items: center;
 }
 
+.col:hover {
+  cursor: pointer;
+  background-color: #ffebcd;
+}
+
 .button-container {
   padding: 20px;
 }
@@ -73,4 +78,9 @@ body {
 .start-button {
   font-size: 18px;
   padding: 6px 12px;
+}
+
+.start-button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
