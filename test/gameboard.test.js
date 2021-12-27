@@ -126,3 +126,31 @@ describe('test receiveAttack', () => {
     expect(patrolBoat.positions).toEqual([0, 1]);
   });
 });
+
+describe('test isAllSunk', () => {
+  let board;
+  let destroyer;
+  let patrolBoat;
+  beforeEach(() => {
+    board = new Gameboard();
+    destroyer = new Ship('Destroyer', 3);
+    patrolBoat = new Ship('Patrol Boat', 2);
+    board.placeShip(destroyer, 0, 0, 'x');
+    board.placeShip(patrolBoat, 4, 9, 'y');
+  });
+  test('every ship is sunk', () => {
+    destroyer.positions = [1, 1, 1];
+    patrolBoat.positions = [1, 1];
+    expect(board.isAllSunk()).toBe(true);
+  });
+  test('some ships are sunk but no all sunk', () => {
+    destroyer.positions = [1, 0, 1];
+    patrolBoat.positions = [1, 1];
+    expect(board.isAllSunk()).toBe(false);
+  });
+  test('no ships are sunk and no all sunk', () => {
+    destroyer.positions = [0, 0, 0];
+    patrolBoat.positions = [0, 0];
+    expect(board.isAllSunk()).toBe(false);
+  });
+});

@@ -1,6 +1,5 @@
-// gameboard class
 class Gameboard {
-  // constructor (10x10 array, {shipType: {ship, position: {x, y}}})
+  // constructor (10x10 array, {shipType: {shipObj, position: {x, y}}})
   constructor() {
     this.matrix = Array.from(Array(10), () => new Array(10).fill(''));
     this.ships = {};
@@ -38,15 +37,15 @@ class Gameboard {
     this.matrix[x][y] = 'X';
   }
 
-  /*
-  receiveAttack(coord) {
-    const shipOnCurGrid = this.board[coord[0]][coord[1]];
-    if (shipOnCurGrid !== '') {
-      this.ships[shipOnCurGrid][0].hit()
+  // report if all ships are sunk 
+  // take in no parameters 
+  // return boolean  
+  isAllSunk() {
+    for (const shipType in this.ships) {
+      if (this.ships[shipType].shipObj.isSunk() === false) return false;
     }
-    this.board[coord[0]][coord[1]] = 'X';
+    return true;
   }
-  */
 }
 
 /*
