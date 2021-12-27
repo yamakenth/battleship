@@ -1,32 +1,42 @@
 // gameboard class
 class Gameboard {
-  // 10x10 board 
+  // constructor (10x10 array, {shipType: {ship, position: {x, y}}})
   constructor() {
-    this.board = Array.from(Array(10), () => new Array(10).fill(''));
+    this.matrix = Array.from(Array(10), () => new Array(10).fill(''));
+    this.ships = {};
   }
-  // place ship on grid and update shipLocation object 
-  // take in ship, coordinate, orientation (x/y)
-  // return no results
-  placeShip(ship, coordinate, orientation) { 
-    const rowStart = coordinate[0];
-    const colStart = coordinate[1];
-    const rowEnd = (orientation === 'x') ? rowStart + 1 : rowStart + ship.length;
-    const colEnd = (orientation === 'y') ?  colStart + 1 : colStart + ship.length; 
-    for (let row = rowStart; row < rowEnd; row++) {
-      for (let col = colStart; col < colEnd; col++) {
-        this.board[row][col] = ship.type;
+  // place ship in matrix and update ships starting grid
+  // take in ship, x-coord, y-coord, orientation (x/y)
+  // return no results 
+  placeShip(ship, x, y, orientation) {
+    // update matrix
+    const xEnd = (orientation === 'x') ? x + 1 : x + ship.length;
+    const yEnd = (orientation === 'y') ?  y + 1 : y + ship.length; 
+    for (let row = x; row < xEnd; row++) {
+      for (let col = y; col < yEnd; col++) {
+        this.matrix[row][col] = ship.type;
       }
     }
+    // update obj
+    this.ships[ship.type] = {
+      shipObj: ship,
+      position: { x, y}
+    };
   }
+
+
+  /*
   // determine if a ship is hit, send hit function to the ship
   // take in coordinate
   // return no result 
   receiveAttack(coord) {
-    if (this.board[coord[0]][coord[1]] === 'O') {
-
+    const shipOnCurGrid = this.board[coord[0]][coord[1]];
+    if (shipOnCurGrid !== '') {
+      this.ships[shipOnCurGrid][0].hit()
     }
     this.board[coord[0]][coord[1]] = 'X';
   }
+  */
 }
 
 /*
@@ -38,4 +48,4 @@ board.placeShip(destroyer, [2, 3], 'y');
 console.log(board.board);
 */
 
-module.exports = { Gameboard: Gameboard };
+export { Gameboard };
