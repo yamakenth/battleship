@@ -66,7 +66,7 @@ body {
   align-items: center;
 }
 
-.col:hover {
+.board.two .col:hover {
   cursor: pointer;
   background-color: #ffebcd;
 }

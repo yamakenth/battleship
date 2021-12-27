@@ -42,3 +42,11 @@ createHeader();
 createContent('Player\s Turn (test)', player, computer, boardP1, boardComputer);
 // create start 
 createStart();
+
+// eventListener for attack input 
+const computerGrids = document.querySelectorAll('.board.two .col');
+computerGrids.forEach(grid => {
+  grid.addEventListener('click', () => {
+    console.log(`clicked grid (${grid.dataset.x}, ${grid.dataset.y})`);
+  });
+});
