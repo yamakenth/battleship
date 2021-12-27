@@ -4,6 +4,8 @@ import { Player } from './factory/player';
 import { Ship } from './factory/ship';
 import { createRandomLayout } from './utility';
 import { createContent, createHeader, createMessage } from './ui-element';
+import { playGame } from './game-logic';
+
 
 // initialize player 1 
 const board1 = new Gameboard();
@@ -28,7 +30,10 @@ const ships2 = [
 createRandomLayout(board2, ships2);
 const player2 = new Player('Computer');
 
-// create header
+// create initial display 
 createHeader();
 createContent(player1, player2, board1, board2);
 createMessage('Player\'s turn');
+
+// play game 
+playGame(player1, player2, board1, board2);

@@ -21,6 +21,9 @@ function createHeader() {
 // take in player1, player2, board1, board2
 // return no results
 function createContent(player1, player2, board1, board2) {
+  if (document.getElementsByClassName('content-container').length > 0) {
+    document.querySelector('.content-container').remove();
+  }
   // > content container
   const contentContainer = document.createElement('div');
   contentContainer.classList.add('content-container');
@@ -83,7 +86,11 @@ function createContent(player1, player2, board1, board2) {
         col.dataset.x = i;
         col.dataset.y = j;
         const gridContent = board.matrix[i][j]; 
-        col.textContent = (!gridContent) ? '' : gridContent.type[0];
+        if (gridContent === '' || gridContent === 'X') {
+          col.textContent = gridContent;
+        } else {
+          col.textContent = gridContent.type[0];
+        }
         row.appendChild(col);
       }
       container.appendChild(row);
@@ -113,6 +120,9 @@ function createContent(player1, player2, board1, board2) {
 // take in message
 // return no results 
 function createMessage(msg) {
+  if (document.getElementsByClassName('message-container').length > 0) {
+    document.querySelector('.message-container').remove();
+  }
   // > container
   const container = document.createElement('div');
   container.classList.add('message-container');
