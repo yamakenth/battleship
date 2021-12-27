@@ -1,14 +1,12 @@
-const ships = require('../src/factory/ship');
-const Ship = ships.Ship;
+import { Ship } from '../src/factory/ship';
 
-describe('Ship class', () => {
+describe('ship is hit', () => {
   let carrier;
   let patrolBoat;
   beforeEach(() => {
     carrier = new Ship('Carrier', 5);
     patrolBoat = new Ship('Patrol Boat', 2);
   });
-
   test('carrier hit on first position', () => {
     carrier.hit(0);
     expect(carrier.positions).toEqual([1, 0, 0, 0, 0]);
@@ -26,18 +24,26 @@ describe('Ship class', () => {
     carrier.hit(2);
     expect(carrier.positions).toEqual([0, 1 ,1, 0, 0]);
   });
-  test('patrol boat is sunk', () => {
-    patrolBoat.hit(0);
-    patrolBoat.hit(1);
-    expect(patrolBoat.isSunk()).toEqual(true);
+});
+
+describe('ship is sunk', () => {
+  let carrier;
+  beforeEach(() => {
+    carrier = new Ship('Carrier', 5);
   });
-  test('patrol boat is hit in one position but not sunk', () => {
-    patrolBoat.hit(0);
-    expect(patrolBoat.isSunk()).toEqual(false);
+  test('carrier boat is sunk', () => {
+    for (let i = 0; i < 5; i++) {
+      carrier.hit(i);
+    }
+    expect(carrier.isSunk()).toEqual(true);
   });
-  test('carrier is hit in tow positions but not sunk', () => {
+  test('carrier is hit in one position but not sunk', () => {
+    carrier.hit(3);
+    expect(carrier.isSunk()).toEqual(false);
+  });
+  test('carrier is hit in two positions but not sunk', () => {
     carrier.hit(0);
-    carrier.hit(1);
+    carrier.hit(3);
     expect(carrier.isSunk()).toEqual(false);
   });
   test('carrier is not hit and not sunk', () => {
