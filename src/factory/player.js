@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { generateRandCoord } from '../utility';
 
 class Player {
   // constructor
@@ -10,12 +11,13 @@ class Player {
   // take in no paramets 
   // return { x, y } 
   generateMove() {
-    const randX = Math.floor(Math.random() * 10);
-    const randY = Math.floor(Math.random() * 10);
-    const itemExists = this.history.filter(item => _.isEqual(item, [randX, randY])).length > 0;
+    const randCoord = generateRandCoord();
+    const itemExists = this.history
+      .filter(item => _.isEqual(item, [randCoord.x, randCoord.y]))
+      .length > 0;
     if (!itemExists) {
       this.history.push([x, y]);
-      return { x: randX, y: randY };
+      return { x: randCoord.x, y: randCoord.y };
     }
     this.generateMove();
   }
