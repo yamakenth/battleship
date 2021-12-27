@@ -52,9 +52,9 @@ function createContent(msg, player1, player2, board1, board2) {
     const container = document.createElement('div');
     container.classList.add('board-container');
     // >> player1 container
-    const player1Container = createPlayerContainer(1, player1, board1);
+    const player1Container = createPlayerContainer('one', player1, board1);
     // >> player2 container
-    const player2Container = createPlayerContainer(2, player2, board2);
+    const player2Container = createPlayerContainer('two', player2, board2);
     // append
     container.append(player1Container);
     container.append(player2Container);
