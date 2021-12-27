@@ -1,7 +1,6 @@
 import { Gameboard } from '../src/factory/gameboard';
 import { Ship } from '../src/factory/ship';
 
-
 describe('test gameboard ship placement', () => {
   let board;
   let destroyer;
