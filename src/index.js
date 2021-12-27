@@ -3,6 +3,7 @@ import { Gameboard } from './factory/gameboard';
 import { Player } from './factory/player';
 import { Ship } from './factory/ship';
 import { createRandomLayout } from './utility';
+import { createContent, createHeader } from './ui-element';
 
 // initialize player 1 
 const board1 = new Gameboard();
@@ -27,7 +28,6 @@ const ships2 = [
 createRandomLayout(board2, ships2);
 const player2 = new Player('Player');
 
-
-
-console.log(board1.matrix);
-console.log(board2.matrix);
+// create header
+createHeader();
+createContent(player1, player2, board1, board2);
