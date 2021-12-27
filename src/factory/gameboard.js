@@ -13,7 +13,7 @@ class Gameboard {
     const yEnd = (orientation === 'y') ?  y + 1 : y + ship.length; 
     for (let row = x; row < xEnd; row++) {
       for (let col = y; col < yEnd; col++) {
-        this.matrix[row][col] = ship.type;
+        this.matrix[row][col] = ship.type[0];
       }
     }
     // update obj
