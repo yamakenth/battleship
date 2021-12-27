@@ -8,12 +8,13 @@ class Gameboard {
   }
   // place ship in matrix and update ships starting grid
   // take in ship, x-coord, y-coord, orientation (x/y)
-  // return no results 
+  // return -1 if error 
   placeShip(ship, x, y, orientation) {
     // list of grids ship will occupy 
     const gridToOccupy = [];
     const xEnd = (orientation === 'x') ? x  : x + ship.length - 1;
     const yEnd = (orientation === 'y') ? y  : y + ship.length - 1; 
+    if (xEnd >= this.matrix.length || xEnd >= this.matrix.length) return -1;
     for (let i = x; i < xEnd + 1; i++) {
       for (let j = y; j < yEnd + 1; j++) {
         gridToOccupy.push([i, j]);
@@ -24,9 +25,7 @@ class Gameboard {
       const isOccupied = this.occupiedGrids
         .filter(item => _.isEqual(item, gridToOccupy[i]))
         .length > 0;
-      if (isOccupied) {
-        throw new Error('Space occupied.');
-      }
+      if (isOccupied) return -1;
       this.matrix[gridToOccupy[i][0]][gridToOccupy[i][1]] = ship;
       this.occupiedGrids.push(gridToOccupy[i]);
     }
