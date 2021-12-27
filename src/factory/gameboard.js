@@ -13,7 +13,7 @@ class Gameboard {
     const yEnd = (orientation === 'y') ?  y + 1 : y + ship.length; 
     for (let row = x; row < xEnd; row++) {
       for (let col = y; col < yEnd; col++) {
-        this.matrix[row][col] = ship.type[0];
+        this.matrix[row][col] = ship.type;
       }
     }
     // update obj
@@ -22,7 +22,6 @@ class Gameboard {
       position: { x, y }
     };
   }
-
   // determine if an attech hit a ship, send hit(), record hit coord
   // take in x-coord, y-coord
   // return no results 
@@ -36,7 +35,6 @@ class Gameboard {
     }
     this.matrix[x][y] = 'X';
   }
-
   // report if all ships are sunk 
   // take in no parameters 
   // return boolean  
