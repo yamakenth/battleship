@@ -24,13 +24,13 @@ function createContent(msg, player1, player2, board1, board2) {
   // > content container
   const contentContainer = document.createElement('div');
   contentContainer.classList.add('content-container');
-  // >> message container 
-  const messageContainer = createMessageContainer();
   // >> board containers 
   const boardContainer = createBoardContainer();
+  // >> message container 
+  const messageContainer = createMessageContainer();
   // apppend 
-  contentContainer.appendChild(messageContainer);
   contentContainer.appendChild(boardContainer);
+  contentContainer.appendChild(messageContainer);
   body.appendChild(contentContainer);
 
   // message container
