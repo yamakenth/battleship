@@ -18,3 +18,18 @@ describe('updateHistory', () => {
     expect(player1.history).toEqual([[1, 1]]);
   });
 });
+
+describe('generateMove', () => {
+  let board;
+  let computer;
+  beforeEach(() => {
+    board = new Gameboard();
+    computer = new Player('AI');
+  });
+  test('play a move', () => {
+    computer.updateHistory(0, 0);
+    const newMove = computer.generateMove();
+    computer.updateHistory(newMove.x, newMove.y);
+    expect(computer.history.length === 1 || computer.history.length === 2).toBeTruthy();
+  });
+});

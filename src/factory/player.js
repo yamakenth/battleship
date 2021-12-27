@@ -13,6 +13,16 @@ class Player {
     const itemExists = this.history.filter(item => _.isEqual(item, [x, y])).length > 0;
     if (!itemExists) this.history.push([x, y]);
   }
+  // generate AI move
+  // take in no paramets 
+  // return { x, y } 
+  generateMove() {
+    const randX = Math.floor(Math.random() * 10);
+    const randY = Math.floor(Math.random() * 10);
+    const itemExists = this.history.filter(item => _.isEqual(item, [randX, randY])).length > 0;
+    if (itemExists) this.generateMove();
+    return { x: randX, y: randY };
+  }
 }
 
 export { Player };
