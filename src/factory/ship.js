@@ -4,6 +4,13 @@ class Ship {
     this.type = type;
     this.length = length;
     this.positions = Array(length).fill(0);
+    this.headIndex = {};
+  }
+  // set first index of ship 
+  // take in x, y 
+  // return no result 
+  setHeadIndex(x, y) {
+    this.headIndex = { x, y };
   }
   // modify positions array when hit 
   // take in hit position 
