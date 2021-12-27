@@ -48,13 +48,4 @@ class Gameboard {
   }
 }
 
-/*
-const ships = require('./ship');
-const Ship = ships.Ship;
-destroyer = new Ship('Destoryer', 3);
-const board = new Gameboard();
-board.placeShip(destroyer, [2, 3], 'y');
-console.log(board.board);
-*/
-
 export { Gameboard };
