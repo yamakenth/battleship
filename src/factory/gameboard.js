@@ -1,20 +1,36 @@
+import _ from 'lodash';
+
 class Gameboard {
   // constructor
   constructor() {
     this.matrix = Array.from(Array(10), () => new Array(10).fill(''));
+    this.occupiedGrids = [];
   }
   // place ship in matrix and update ships starting grid
   // take in ship, x-coord, y-coord, orientation (x/y)
   // return no results 
   placeShip(ship, x, y, orientation) {
-    ship.setHeadIndex(x, y);
-    const xEnd = (orientation === 'x') ? x + 1 : x + ship.length;
-    const yEnd = (orientation === 'y') ?  y + 1 : y + ship.length; 
-    for (let row = x; row < xEnd; row++) {
-      for (let col = y; col < yEnd; col++) {
-        this.matrix[row][col] = ship;
+    // list of grids ship will occupy 
+    const gridToOccupy = [];
+    const xEnd = (orientation === 'x') ? x  : x + ship.length - 1;
+    const yEnd = (orientation === 'y') ? y  : y + ship.length - 1; 
+    for (let i = x; i < xEnd + 1; i++) {
+      for (let j = y; j < yEnd + 1; j++) {
+        gridToOccupy.push([i, j]);
       }
     }
+    // check if ship can occupy the whole space 
+    for (let i = 0; i < gridToOccupy.length; i++) {
+      const isOccupied = this.occupiedGrids
+        .filter(item => _.isEqual(item, gridToOccupy[i]))
+        .length > 0;
+      if (isOccupied) {
+        throw new Error('Space occupied.');
+      }
+      this.matrix[gridToOccupy[i][0]][gridToOccupy[i][1]] = ship;
+      this.occupiedGrids.push(gridToOccupy[i]);
+    }
+    ship.setHeadIndex(x, y);
   }
   // determine if an attack hit a ship, send hit(), record hit coord
   // take in x-coord, y-coord
