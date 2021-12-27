@@ -1,3 +1,5 @@
+import { addClickEventListener } from './game-logic';
+
 // html body element 
 const body = document.querySelector('body');
 
@@ -32,6 +34,8 @@ function createContent(player1, player2, board1, board2) {
   // apppend 
   contentContainer.appendChild(boardContainer);
   body.appendChild(contentContainer);
+  // eventListener
+  addClickEventListener(player1, player2, board1, board2);
 
   // board container 
   function createBoardContainer() {

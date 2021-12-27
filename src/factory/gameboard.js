@@ -33,7 +33,7 @@ class Gameboard {
   }
   // determine if an attack hit a ship, send hit(), record hit coord
   // take in x-coord, y-coord
-  // return no results 
+  // return no results
   receiveAttack(x, y) {
     const gridContent = this.matrix[x][y];
     if (gridContent !== '' && gridContent !== 'X') {

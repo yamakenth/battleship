@@ -4,7 +4,7 @@ import { Player } from './factory/player';
 import { Ship } from './factory/ship';
 import { createRandomLayout } from './utility';
 import { createContent, createHeader, createMessage } from './ui-element';
-import { playGame } from './game-logic';
+import { addClickEventListener } from './game-logic';
 
 
 // initialize player 1 
@@ -35,5 +35,5 @@ createHeader();
 createContent(player1, player2, board1, board2);
 createMessage('Player\'s turn');
 
-// play game 
-playGame(player1, player2, board1, board2);
+// add click eventListener to grids
+addClickEventListener(player1, player2, board1, board2);
