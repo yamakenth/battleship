@@ -95,6 +95,7 @@ function createContent(msg, player1, player2, board1, board2) {
         col.classList.add('col');
         col.dataset.x = i;
         col.dataset.y = j;
+        col.textContent = board.matrix[i][j];
         row.appendChild(col);
       }
       container.appendChild(row);
