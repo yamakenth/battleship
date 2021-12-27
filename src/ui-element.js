@@ -95,7 +95,7 @@ function createContent(msg, player1, player2, board1, board2) {
         col.classList.add('col');
         col.dataset.x = i;
         col.dataset.y = j;
-        col.textContent = board.matrix[i][j];
+        col.textContent = board.matrix[i][j][0];
         row.appendChild(col);
       }
       container.appendChild(row);
@@ -105,25 +105,7 @@ function createContent(msg, player1, player2, board1, board2) {
   }
 }
 
-// create start 
-// take in no parameters
-// return no results 
-function createStart() {
-  // > container 
-  const container = document.createElement('div');
-  container.classList.add('button-container');
-  // >> button 
-  const startButton = document.createElement('button');
-  startButton.type = 'button';
-  startButton.classList.add('start-button');
-  startButton.textContent = 'Start';
-  // append 
-  container.appendChild(startButton);
-  body.appendChild(container);
-}
-
 export {
   createHeader,
-  createContent,
-  createStart
+  createContent
 }
