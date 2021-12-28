@@ -30,12 +30,10 @@ function createRandomLayout(board, ships) {
   while (i < ships.length) {
     const { x, y } = generateRandCoord();
     const orientation = (Math.floor(Math.random() * 2) === 0) ? 'x' : 'y';
-    console.log(`${ships[i].type}(${ships[i].length}): (${x}, ${y}), ${orientation}`);
-    
     const placeShipStatus = board.placeShip(ships[i], x, y, orientation);
-    console.log(placeShipStatus);
-    
-    i++;
+    if (placeShipStatus === 1) {
+      i++;
+    }
   }
 }
 
