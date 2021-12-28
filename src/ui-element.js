@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import { addClickEventListener } from './game-logic';
 
 // html body element 
@@ -93,7 +94,7 @@ function createContent(player1, player2, board1, board2) {
         } else if (gridContent === 'X') {
           col.textContent = gridContent;
           col.classList.add('disabled-ship');
-        } else {
+        } else if (_.isEqual(board, board1)) {
           col.textContent = gridContent.type[0];
           col.classList.add('active-ship');
         }
