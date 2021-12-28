@@ -59,7 +59,7 @@ function createContent(player1, player2, board1, board2) {
     container.classList.add('player-container');
     container.classList.add(n);
     // >> name 
-    const name = document.createElement('h3');
+    const name = document.createElement('h2');
     name.classList.add('player-name');
     name.classList.add(n);
     name.textContent = player.name;

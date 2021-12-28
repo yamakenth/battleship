@@ -17,6 +17,11 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'PT Sans', sans-serif;
+  background-color: #ebe3d9;
+}
+
+h1 {
+  font-size: 60px;
 }
 
 body {
@@ -62,6 +67,8 @@ body {
   flex-direction: column;
   justify-content: stretch;
   margin-bottom: 16px;;
+  padding: 6px;
+  background-color: #5f9ea0;
 }
 
 .row {
@@ -72,10 +79,11 @@ body {
 
 .col {
   flex: 1;
-  border: 1px solid #000;
+  border: 1px solid #c7c7c779;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #fff;
 }
 
 .board.two .col:hover {
