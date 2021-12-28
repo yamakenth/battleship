@@ -53,8 +53,10 @@ class Gameboard {
     if (gridContent instanceof Ship) {
       const hitPosition = (x - gridContent.headIndex.x) || (y - gridContent.headIndex.y);
       gridContent.hit(hitPosition);
+      this.matrix[x][y] = 'X';
+    } else {
+      this.matrix[x][y] = 'x';
     }
-    this.matrix[x][y] = 'X';
     return 1;
   }
 
@@ -65,7 +67,7 @@ class Gameboard {
     for (let i = 0; i < this.matrix.length; i++) {
       for (let j = 0; j < this.matrix.length; j++) {
         const gridContent = this.matrix[i][j]
-        if (gridContent !== '' && gridContent !== 'X') return false;
+        if (gridContent !== '' && gridContent !== 'X' && gridContent !== 'x') return false;
       }
     }
     return true;

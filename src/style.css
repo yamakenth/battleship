@@ -99,3 +99,7 @@ body {
   background-color: #0000ff;
   color: #fff;
 }
+
+.disabled-ship {
+  color: #f00;
+}

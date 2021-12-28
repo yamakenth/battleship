@@ -8,7 +8,9 @@ function addClickEventListener(player1, player2, board1, board2) {
   grids.forEach(grid => {
     grid.addEventListener('click', () => {
       // if already clicked then do nothing  
-      if (board2.matrix[grid.dataset.x][grid.dataset.y] === 'X') return;
+      if (
+        board2.matrix[grid.dataset.x][grid.dataset.y] === 'X'
+        || board2.matrix[grid.dataset.x][grid.dataset.y] === 'x') return;
       // player move
       const attackStatus = board2.receiveAttack(grid.dataset.x, grid.dataset.y);
       // if player's move is legal 

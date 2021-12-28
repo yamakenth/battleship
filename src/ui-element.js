@@ -87,9 +87,12 @@ function createContent(player1, player2, board1, board2) {
         col.dataset.x = i;
         col.dataset.y = j;
         const gridContent = board.matrix[i][j]; 
-        if (gridContent !== 'X') col.classList.add('active');
-        if (gridContent === '' || gridContent === 'X') {
+        if (gridContent !== 'X' || gridContent !== 'x') col.classList.add('active');
+        if (gridContent === '' || gridContent === 'x') {
           col.textContent = gridContent;
+        } else if (gridContent === 'X') {
+          col.textContent = gridContent;
+          col.classList.add('disabled-ship');
         } else {
           col.textContent = gridContent.type[0];
           col.classList.add('active-ship');
