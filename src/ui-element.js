@@ -13,7 +13,7 @@ function createHeader() {
   // >> title 
   const title = document.createElement('h1');
   title.classList.add('header-title');
-  title.textContent = 'BattleShip';
+  title.textContent = 'Battleship';
   // append
   headerContainer.appendChild(title);
   body.appendChild(headerContainer);
