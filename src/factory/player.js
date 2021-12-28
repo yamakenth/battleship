@@ -7,7 +7,7 @@ class Player {
     this.name = name;
     this.history = [];
   }
-  
+
   // generate AI move
   // take in no paramets 
   // return { x, y } 
@@ -17,7 +17,7 @@ class Player {
       .filter(item => _.isEqual(item, [randCoord.x, randCoord.y]))
       .length > 0;
     if (!itemExists) {
-      this.history.push([x, y]);
+      this.history.push([randCoord.x, randCoord.y]);
       return { x: randCoord.x, y: randCoord.y };
     }
     this.generateMove();
