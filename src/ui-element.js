@@ -124,4 +124,28 @@ function createMessage(msg) {
   body.appendChild(container);
 }
 
-export { createHeader, createContent, createMessage };
+// create gameover pop up 
+// take in message
+// return no results 
+function createGameoverPopup(msg) {
+  // > overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'overlay';
+  // > form 
+  const form = document.createElement('form');
+  form.classList.add('gameover-form');
+  // >> message 
+  const message = document.createElement('h2');
+  message.textContent = msg;
+  // >> replay button 
+  const button = document.createElement('button');
+  button.type = 'submit';
+  button.textContent = 'Play Again';
+  // append 
+  body.appendChild(overlay);
+  form.appendChild(message);
+  form.appendChild(button);
+  body.appendChild(form);
+}
+
+export { createHeader, createContent, createMessage, createGameoverPopup };

@@ -1,4 +1,4 @@
-import { createContent, createMessage } from "./ui-element";
+import { createContent, createGameoverPopup, createMessage } from "./ui-element";
 
 // add eventListener to respond to click and play game 
 // take in player1, player2, board1, board2
@@ -18,7 +18,9 @@ function addClickEventListener(player1, player2, board1, board2) {
         // render computer's board
         createContent(player1, player2, board1, board2);
         if (board2.isAllSunk()) {
-          createMessage(`${player1.name} won!`);
+          const msg = `${player1.name} won!`;
+          createMessage(msg);
+          createGameoverPopup(msg);
           return;
         }
         createMessage('Computer\'s turn');
@@ -29,7 +31,9 @@ function addClickEventListener(player1, player2, board1, board2) {
           // render player's board 
           createContent(player1, player2, board1, board2);
           if (board1.isAllSunk()) {
-            createMessage(`${player2.name} won!`);
+            const msg = `${player2.name} won!`;
+            createMessage();
+            createGameoverPopup(msg);
             return;
           }
           createMessage('Player\'s turn');

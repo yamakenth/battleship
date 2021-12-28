@@ -17,7 +17,6 @@
   margin: 0;
   box-sizing: border-box;
   font-family: 'PT Sans', sans-serif;
-  background-color: #ebe3d9;
 }
 
 h1 {
@@ -30,6 +29,7 @@ body {
   justify-content: space-around;
   align-items: center;
   height: 100vh;
+  background-color: #ebe3d9;
 }
 
 .header-container {
@@ -53,6 +53,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 50px;
+  margin-bottom: 16px;
 }
 
 .player-name {
@@ -66,7 +67,6 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: stretch;
-  margin-bottom: 16px;;
   padding: 6px;
   background-color: #5f9ea0;
 }
@@ -102,4 +102,47 @@ body {
 
 .disabled-ship {
   color: #f00;
+}
+
+.col.gameover {
+  background-color: #808080;
+  pointer-events: none;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000080;
+  pointer-events: all;
+}
+
+.gameover-form {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  padding: 30px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  border: 1px solid #000;
+}
+
+button {
+  padding: 2px 12px;
+  border: none;
+  background-color: #008000;
+  color: #fff;
+}
+
+button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
