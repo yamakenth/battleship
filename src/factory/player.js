@@ -7,6 +7,7 @@ class Player {
     this.name = name;
     this.history = [];
   }
+  
   // generate AI move
   // take in no paramets 
   // return { x, y } 
