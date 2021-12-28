@@ -7,23 +7,26 @@ function addClickEventListener(player1, player2, board1, board2) {
   const grids = document.querySelectorAll('.board.two .col');
   grids.forEach(grid => {
     grid.addEventListener('click', () => {
-      console.log(`clicked (${grid.dataset.x}, ${grid.dataset.y})`);
+      // if already clicked then do nothing  
+      if (board2.matrix[grid.dataset.x][grid.dataset.y] === 'X') return;
       // player move
-      playPlayer(grid, player1, player2, board1, board2);
-      // computer move 
-      console.log('NO');
-      
+      const attackStatus = board2.receiveAttack(grid.dataset.x, grid.dataset.y);
+      // if player's move is legal 
+      if (attackStatus === 1) {
+        // render computer's board
+        createContent(player1, player2, board1, board2);
+        createMessage('Computer\'s turn');
+        setTimeout(() => {
+          // computer move 
+          const compMove = player2.generateMove();
+          board1.receiveAttack(compMove.x, compMove.y);
+          // render player's board 
+          createContent(player1, player2, board1, board2);
+          createMessage('Player\'s turn');
+        }, 1000);
+      }
     });
   });
-}
-
-// player play game 
-// take grid, player1, player2, board1, board2
-// return no results 
-function playPlayer(grid, player1, player2, board1, board2) {
-  board2.receiveAttack(grid.dataset.x, grid.dataset.y);
-  createContent(player1, player2, board1, board2);
-  createMessage('skeet');
 }
 
 export { addClickEventListener };
