@@ -12,15 +12,15 @@ class Player {
   // take in no paramets 
   // return { x, y } 
   generateMove() {
-    const randCoord = generateRandCoord();
-    const itemExists = this.history
-      .filter(item => _.isEqual(item, [randCoord.x, randCoord.y]))
-      .length > 0;
-    if (!itemExists) {
-      this.history.push([randCoord.x, randCoord.y]);
-      return { x: randCoord.x, y: randCoord.y };
+    let itemExists = true;
+    let x;
+    let y;
+    while(itemExists) {
+      ({ x, y } = generateRandCoord());
+      itemExists = this.history.filter(item => _.isEqual(item, [x, y])).length > 0;
     }
-    this.generateMove();
+    this.history.push([x, y]);
+    return { x, y };
   }
 }
 

@@ -15,6 +15,10 @@ function addClickEventListener(player1, player2, board1, board2) {
       if (attackStatus === 1) {
         // render computer's board
         createContent(player1, player2, board1, board2);
+        if (board2.isAllSunk()) {
+          createMessage(`${player1.name} won!`);
+          return;
+        }
         createMessage('Computer\'s turn');
         setTimeout(() => {
           // computer move 
@@ -22,6 +26,10 @@ function addClickEventListener(player1, player2, board1, board2) {
           board1.receiveAttack(compMove.x, compMove.y);
           // render player's board 
           createContent(player1, player2, board1, board2);
+          if (board1.isAllSunk()) {
+            createMessage(`${player2.name} won!`);
+            return;
+          }
           createMessage('Player\'s turn');
         }, 1000);
       }

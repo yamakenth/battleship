@@ -65,12 +65,9 @@ function createContent(player1, player2, board1, board2) {
     name.textContent = player.name;
     // >> gameboard
     const gameboard = createGameboard(n, board);
-    // >> active ships 
-    const activeShips = createActiveShipDisplay();
     // append 
     container.appendChild(name);
     container.appendChild(gameboard);
-    container.appendChild(activeShips);
     return container;
   }
 
@@ -100,22 +97,6 @@ function createContent(player1, player2, board1, board2) {
       container.appendChild(row);
     }
     // append 
-    return container;
-  }
-
-  // create activbe ship display
-  function createActiveShipDisplay() {
-    // > container
-    const container = document.createElement('div');
-    container.classList.add('active-ships');
-    // >> ships
-    const ships = ['carrier', 'battleship', 'destroyer', 'submarine', 'patrol-boat'];
-    ships.forEach(ship => {
-      const symbol = document.createElement('h3');
-      symbol.classList.add(ship);
-      symbol.textContent = ship;
-      container.appendChild(symbol);
-    });
     return container;
   }
 }
