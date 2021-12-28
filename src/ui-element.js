@@ -92,6 +92,7 @@ function createContent(player1, player2, board1, board2) {
           col.textContent = gridContent;
         } else {
           col.textContent = gridContent.type[0];
+          col.classList.add('active-ship');
         }
         row.appendChild(col);
       }

@@ -94,3 +94,8 @@ body {
 .message-container {
   padding: 20px;
 }
+
+.active-ship {
+  background-color: #0000ff;
+  color: #fff;
+}
