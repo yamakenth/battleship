@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { shareSameElement } from '../utility';
 
 class Gameboard {
   // constructor
@@ -8,28 +9,34 @@ class Gameboard {
   }
   // place ship in matrix and update ships starting grid
   // take in ship, x-coord, y-coord, orientation (x/y)
-  // return -1 if error 
+  // return 1 if success -1 if fail
   placeShip(ship, x, y, orientation) {
-    // list of grids ship will occupy 
-    const gridToOccupy = [];
+    // determine end grids
     const xEnd = (orientation === 'x') ? x  : x + ship.length - 1;
     const yEnd = (orientation === 'y') ? y  : y + ship.length - 1; 
-    if (xEnd >= this.matrix.length || xEnd >= this.matrix.length) return -1;
+    // check if out of bounds 
+    if (xEnd >= this.matrix.length || yEnd >= this.matrix.length) return -1;
+    // list of grids ship will occupy 
+    const gridToOccupy = [];
     for (let i = x; i < xEnd + 1; i++) {
       for (let j = y; j < yEnd + 1; j++) {
         gridToOccupy.push([i, j]);
       }
     }
-    // check if ship can occupy the whole space 
-    for (let i = 0; i < gridToOccupy.length; i++) {
-      const isOccupied = this.occupiedGrids
-        .filter(item => _.isEqual(item, gridToOccupy[i]))
-        .length > 0;
-      if (isOccupied) return -1;
-      this.matrix[gridToOccupy[i][0]][gridToOccupy[i][1]] = ship;
-      this.occupiedGrids.push(gridToOccupy[i]);
+    // check if ship can occupy whole space 
+    const canOccupy = !shareSameElement(gridToOccupy, this.occupiedGrids);
+    // if can occupy then push and set ship head index 
+    if (canOccupy) {
+      for (let i = 0; i < gridToOccupy.length; i++) {
+        this.matrix[gridToOccupy[i][0]][gridToOccupy[i][1]] = ship;
+        this.occupiedGrids.push(gridToOccupy[i]);
+      }
+      ship.setHeadIndex(x, y);
+    } else {
+      return -1;
     }
-    ship.setHeadIndex(x, y);
+    // return 1 when success
+    return 1;
   }
   // determine if an attack hit a ship, send hit(), record hit coord
   // take in x-coord, y-coord
