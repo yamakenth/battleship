@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import { shareSameElement } from '../utility';
+import { Ship } from './ship';
 
 class Gameboard {
   // constructor
@@ -7,6 +7,7 @@ class Gameboard {
     this.matrix = Array.from(Array(10), () => new Array(10).fill(''));
     this.occupiedGrids = [];
   }
+
   // place ship in matrix and update ships starting grid
   // take in ship, x-coord, y-coord, orientation (x/y)
   // return 1 if success -1 if fail
@@ -38,17 +39,25 @@ class Gameboard {
     // return 1 when success
     return 1;
   }
+
   // determine if an attack hit a ship, send hit(), record hit coord
   // take in x-coord, y-coord
-  // return no results
+  // return 1 if valid attack -1 otherwise
   receiveAttack(x, y) {
     const gridContent = this.matrix[x][y];
-    if (gridContent !== '' && gridContent !== 'X') {
+    // if grid is already attacked then invalid 
+    if (gridContent === 'X') {
+      return -1;
+    }
+    // if attack hits a ship 
+    if (gridContent instanceof Ship) {
       const hitPosition = (x - gridContent.headIndex.x) || (y - gridContent.headIndex.y);
       gridContent.hit(hitPosition);
     }
     this.matrix[x][y] = 'X';
+    return 1;
   }
+
   // report if all ships are sunk 
   // take in no parameters 
   // return boolean  
