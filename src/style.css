@@ -86,7 +86,7 @@ body {
   background-color: #fff;
 }
 
-.board.two .col:hover {
+.board.two .col.active:hover {
   cursor: pointer;
   background-color: #ffebcd;
 }

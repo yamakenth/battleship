@@ -87,6 +87,7 @@ function createContent(player1, player2, board1, board2) {
         col.dataset.x = i;
         col.dataset.y = j;
         const gridContent = board.matrix[i][j]; 
+        if (gridContent !== 'X') col.classList.add('active');
         if (gridContent === '' || gridContent === 'X') {
           col.textContent = gridContent;
         } else {
